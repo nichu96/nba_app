@@ -1,5 +1,5 @@
-Flask==2.1.1
+Flask
 nba-api
-Flask-SQLAlchemy==2.6.0
-Werkzeug==2.1.1
-Flask-Login==0.5.4
+Flask-SQLAlchemy
+Werkzeug
+Flask-Login
