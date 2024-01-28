@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Player Stats Fetcher</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4 text-center">NBA Player Stats Fetcher</h1>
+        <div class="row mb-2">
+            <div class="col">
+                <input type="text" id="player_search" class="form-control" placeholder="Wyszukaj zawodnika">
+                <div id="autocomplete-suggestions" class="list-group"></div>
+            </div>
+            <div class="col">
+                <select id="season_select" class="form-control">
+                    <option value="2023-24">2023-24</option>
+                    <option value="2022-23">2022-23</option>
+                    <option value="2021-22">2021-22</option>
+                    <option value="2020-21">2020-21</option>
+                    <option value="2019-20">2019-20</option>
+                    <option value="2018-19">2018-19</option>
+                </select>
+            </div>
+            <div class="col">
+                <button id="load_season" class="btn btn-primary">Wczytaj sezon</button>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                <select id="bet_type" class="form-control">
+                    <option value="Punkty">Punkty</option>
+                    <option value="Asysty">Asysty</option>
+                    <option value="Zbiórki">Zbiórki</option>
+                    <option value="Przechwyty">Przechwyty</option>
+                    <option value="Bloki">Bloki</option>
+                    <option value="Straty">Straty</option>
+                    <option value="Trafione za 3">Trafione za 3</option>
+                    <option value="Punkty i asysty">Punkty i asysty</option>
+                    <option value="Punkty i zbiórki">Punkty i zbiórki</option>
+                    <option value="Punkty, asysty i zbiórki">Punkty, asysty i zbiórki</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="number" id="ou_line" class="form-control" placeholder="Podaj linię">
+                <div class="mt-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ou_selection" id="over" value="over" checked>
+                        <label class="form-check-label" for="over">Over</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ou_selection" id="under" value="under">
+                        <label class="form-check-label" for="under">Under</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <button id="load_stats" class="btn btn-primary">Wczytaj linię</button>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div id="over_under_result" class="text-center"></div>
+            </div>
+        </div>
+        <div id="stats_table" class="stats-table">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Data Meczu</th>
+                        <th>Mecz</th>
+                        <th>Punkty</th>
+                        <th>Asysty</th>
+                        <th>Zbiórki</th>
+                        <th>Przechwyty</th>
+                        <th>Bloki</th>
+                        <th>Straty</th>
+                        <th>Trafione za 3</th>
+                    </tr>
+                </thead>
+                <tbody id="stats_body">
+                    <!-- Dynamicznie generowane wiersze z danymi statystycznymi będą tutaj wstawiane -->
+                </tbody>
+            </table>
+        </div>
+        <div id="result_label" class="text-center"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
