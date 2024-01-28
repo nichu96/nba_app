@@ -70,6 +70,9 @@ def fetch_player_stats():
                 f"No data for player {selected_player} in season {selected_season}."
             )
 
+        # Introduce a sleep time of 0.6 seconds between API calls
+        time.sleep(0.6)
+
         return jsonify(stats_df.to_dict(orient="records"))
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
